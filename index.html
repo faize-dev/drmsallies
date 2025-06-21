@@ -279,6 +279,7 @@ reconstructive surgery.
                 <p></p>
             </header>
             <div class="row">
+
                 <div class="col-6 col-12-small">
                     <form method="post" action="#">
                         <div class="row">
@@ -296,11 +297,11 @@ reconstructive surgery.
                             </div>
                             <div class="col-12">
                                 <ul class="actions">
-                                    <li><input type="submit" value="Send Message" /></li>
+                                    <li><input type="button" value="Send Message" onclick="sendEmail()" /></li>
                                 </ul>
                             </div>
-                            <div class="col-12"><a aria-label="Chat on WhatsApp" href="https://wa.me/1XXXXXXXXXX"> <img alt="Chat on WhatsApp" src="images/WhatsAppButtonGreenLarge.png" width="50%" /></a>
-                            </div>
+<!--                             <div class="col-12"><a aria-label="Chat on WhatsApp" href="https://wa.me/1XXXXXXXXXX"> <img alt="Chat on WhatsApp" src="images/WhatsAppButtonGreenLarge.png" width="50%" /></a>
+                            </div> -->
                         </div>
                     </form>
                 </div>
@@ -340,6 +341,31 @@ reconstructive surgery.
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+<script>
+function sendEmail() {
+    // Get form values
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var subject = document.getElementById('subject').value;
+    var message = document.getElementById('message').value;
+
+    // Validate that all fields are filled
+    if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    // Construct the mailto link
+    var mailtoLink = 'mailto:admin@drmsallies.co.za' +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent('Name: ' + name + '\n' +
+                                     'Email: ' + email + '\n\n' +
+                                     'Message:\n' + message);
+
+    // Open email client
+    window.location.href = mailtoLink;
+}
+</script>
 </body>
 
 </html>
